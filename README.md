@@ -13,3 +13,7 @@ TODO: Add steps here
 ## Documentation
 
 TODO: Add documentation
+
+## Things pending for project-setup
+
+- Convert SASS to CSS upon build before publishing
