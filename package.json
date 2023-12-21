@@ -1,6 +1,6 @@
 {
   "name": "@bliss-ui/bliss-ui",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.2",
   "description": "Bliss UI is a web component library built with StencilJS",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
