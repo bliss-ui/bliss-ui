@@ -1,0 +1,39 @@
+name: Bliss UI Alpha Releases CI Workflow
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set Git user details
+        run: |
+          git config user.email "15381417+vinayuttam@users.noreply.github.com"
+          git config user.name "Vinay Uttam Vemparala"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.10.0'
+          registry-url: https://registry.npmjs.org/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Tests
+        run: npm run test
+
+      - name: Publish alpha version to npm
+        run: npm run alpha-release && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
