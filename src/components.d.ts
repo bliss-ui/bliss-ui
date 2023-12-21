@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface BuiText {
         /**
+          * The color of the text
+         */
+        "color": string;
+        /**
           * The text to display
          */
         "text": string;
@@ -26,6 +30,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BuiText {
+        /**
+          * The color of the text
+         */
+        "color"?: string;
         /**
           * The text to display
          */

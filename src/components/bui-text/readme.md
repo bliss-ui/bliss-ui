@@ -5,9 +5,10 @@
 
 ## Properties
 
-| Property | Attribute | Description         | Type     | Default     |
-| -------- | --------- | ------------------- | -------- | ----------- |
-| `text`   | `text`    | The text to display | `string` | `undefined` |
+| Property | Attribute | Description           | Type     | Default     |
+| -------- | --------- | --------------------- | -------- | ----------- |
+| `color`  | `color`   | The color of the text | `string` | `undefined` |
+| `text`   | `text`    | The text to display   | `string` | `undefined` |
 
 
 ----------------------------------------------

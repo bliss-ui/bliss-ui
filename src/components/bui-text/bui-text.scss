@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.bui-text-primary {
+  color: var(--bui-primary-color, $primary-color);
+}
+
+.bui-text-success {
+  color: var(--bui-success-color, $success-color);
+}
