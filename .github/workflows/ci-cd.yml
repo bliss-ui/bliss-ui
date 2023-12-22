@@ -1,4 +1,4 @@
-name: Bliss UI Alpha Releases CI Workflow
+name: Bliss UI Release Workflow
 
 on:
   release:
@@ -33,7 +33,7 @@ jobs:
       - name: Tests
         run: npm run test
 
-      - name: Publish alpha version to npm
-        run: npm run alpha-release && npm publish --access public
+      - name: Publish version to npm
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

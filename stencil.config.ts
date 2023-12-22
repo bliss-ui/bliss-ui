@@ -3,8 +3,10 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import postcssRTLCSS from 'postcss-rtlcss';
 
+const packageName = 'bliss-ui';
 export const config: Config = {
-  namespace: 'bliss-ui',
+  autoprefixCss: true,
+  namespace: packageName,
   outputTargets: [
     {
       type: 'dist',

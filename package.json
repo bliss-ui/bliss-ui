@@ -1,6 +1,6 @@
 {
   "name": "@bliss-ui/bliss-ui",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-pre-release.0",
   "description": "Bliss UI is a web component library built with StencilJS",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -17,27 +17,41 @@
   "license": "MIT",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "css/"
   ],
   "scripts": {
-    "alpha-release": "npm version prerelease --preid=alpha",
-    "build": "stencil build --docs",
+    "add:css": "npm run clean:css && npx mkdirp css",
+    "clean:css": "rimraf css",
+    "build:components": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "build:autoprefix": "postcss css/*.css --use autoprefixer --dir css",
+    "build:mincss": "cleancss -b css/*.css css",
+    "build:scss": "node-sass --include-path node_modules --include-path ../../node_modules --output-style compressed --recursive src/styles/ -o css",
+    "build:styles": "npm run build:scss && npm run build:autoprefix && npm run build:mincss && npx copy css/bliss-ui-min.css dist",
+    "build": "npm run add:css && npm run build:components && npm run build:styles"
   },
   "dependencies": {
-    "@stencil/core": "^4.7.0"
+    "@stencil/core": "^4.7.0",
+    "bootstrap": "^5.3.2"
   },
   "devDependencies": {
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^3.0.8",
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
+    "autoprefixer": "^10.4.16",
+    "clean-css-cli": "^5.6.3",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
+    "node-sass": "^9.0.0",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
     "postcss-rtlcss": "^4.0.9",
-    "puppeteer": "21.1.1"
+    "puppeteer": "21.1.1",
+    "rimraf": "^5.0.5"
   }
 }
