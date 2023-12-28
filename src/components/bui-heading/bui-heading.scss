@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+:host {
+  display: block;
+}
+
+.bui-heading {
+  font-family: var(--bui-font-family);
+  font-weight: var(--bui-heading-font-weight);
+  color: var(--bui-font-color-base, $color-text-base);
+  margin-top: var(--bui-typography-margin-top, 1.2em);
+  margin-bottom:var(--bui-typography-margin-bottom, 0.5em);
+
+  &.bui-heading-level-1 {
+    font-size: var(--bui-heading-level-1-font-size, 2.375rem);
+    line-height: var(--bui-heading-level-1-line-height, 2.875rem);
+  }
+
+  &.bui-heading-level-2 {
+    font-size: var(--bui-heading-level-2-font-size, 1.875rem);
+    line-height: var(--bui-heading-level-2-line-height, 2.375rem);
+  }
+
+  &.bui-heading-level-3 {
+    font-size: var(--bui-heading-level-3-font-size, 1.5rem);
+    line-height: var(--bui-heading-level-3-line-height, 2rem);
+  }
+
+  &.bui-heading-level-4 {
+    font-size: var(--bui-heading-level-4-font-size, 1.25rem);
+    line-height: var(--bui-heading-level-4-line-height, 1.75rem);
+  }
+
+  &.bui-heading-level-5 {
+    font-size: var(--bui-heading-level-5-font-size, 1rem);
+    line-height: var(--bui-heading-level-5-line-height, 1.5rem);
+  }
+
+  &.bui-heading-level-6 {
+    font-size: var(--bui-heading-level-6-font-size, 0.875rem);
+    line-height: var(--bui-heading-level-6-line-height, 1.375rem);
+  }
+}

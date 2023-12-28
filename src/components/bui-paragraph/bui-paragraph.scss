@@ -1,0 +1,63 @@
+@import '../../styles/variables.scss';
+
+:host {
+  display: block;
+}
+
+.bui-paragraph {
+  font-family: var(--bui-font-family);
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  color: var(--bui-font-color-base, $color-text-base);
+  margin-top: 0;
+  margin-bottom: var(--bui-typography-margin-bottom, 0.5em);
+}
+
+.bui-paragraph-strong {
+  font-weight: var(--bui-paragraph-strong-font-weight, 600);
+}
+
+.bui-paragraph-italic {
+  font-style: italic;
+}
+
+.bui-paragraph-underlined {
+  text-decoration: underline;
+}
+
+.bui-paragraph-disabled {
+  cursor: not-allowed;
+  user-select: none;
+  color: var(--bui-font-color-disabled, $color-text-quaternary);
+}
+
+.bui-paragraph-primary {
+  color: var(--bui-font-color-primary, $color-primary);
+}
+
+.bui-paragraph-secondary {
+  color: var(--bui-font-color-secondary, $color-text-secondary);
+}
+
+.bui-paragraph-success {
+  color: var(--bui-font-color-success, $color-success);
+}
+
+.bui-paragraph-warning {
+  color: var(--bui-font-color-warning, $color-warning);
+}
+
+.bui-paragraph-error {
+  color: var(--bui-font-color-error, $color-error);
+}
+
+.bui-paragraph-code {
+  font-family: var(--bui-font-family-code, $font-family-code);
+  font-size: 85%;
+  background: rgba(150, 150, 150, .1);
+  padding-inline: 0.4em;
+  padding-block: 0.2em 0.1em;
+  border-radius: 3px;
+  margin: 0 0.2em;
+  border: 1px solid rgba(100, 100, 100, .2);
+}

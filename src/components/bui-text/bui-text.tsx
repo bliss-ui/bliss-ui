@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'bui-text',
@@ -6,17 +6,13 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class BuiText {
-  /**
-   * The text to display
-   */
-  @Prop() text: string;
-
-  /**
-   * The color of the text
-   */
-  @Prop() color: string;
+  // Todo: Implement Text component
 
   render() {
-    return <div class={`bui-text ${this.color ? `bui-text-${this.color}` : ''}`}>{this.text}</div>;
+    return (
+      <Host>
+        <slot></slot>
+      </Host>
+    );
   }
 }

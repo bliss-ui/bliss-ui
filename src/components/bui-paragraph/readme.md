@@ -1,4 +1,4 @@
-# bui-text
+# bui-paragraph
 
 
 

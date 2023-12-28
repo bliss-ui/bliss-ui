@@ -6,18 +6,58 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface BuiHeading {
+        /**
+          * The level of the heading.
+         */
+        "level": number;
+    }
+    interface BuiParagraph {
+        /**
+          * Code text
+         */
+        "code": boolean;
+        /**
+          * Color of the text
+         */
+        "color": 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+        /**
+          * Disabled text
+         */
+        "disabled": boolean;
+        /**
+          * Display ellipsis when text overflows, can configure rows and expandable by using object
+         */
+        "ellipsis": boolean;
+        /**
+          * Italic font style
+         */
+        "italic": boolean;
+        /**
+          * Strong font weight
+         */
+        "strong": boolean;
+        /**
+          * Underline text decoration
+         */
+        "underlined": boolean;
+    }
     interface BuiText {
-        /**
-          * The color of the text
-         */
-        "color": string;
-        /**
-          * The text to display
-         */
-        "text": string;
     }
 }
 declare global {
+    interface HTMLBuiHeadingElement extends Components.BuiHeading, HTMLStencilElement {
+    }
+    var HTMLBuiHeadingElement: {
+        prototype: HTMLBuiHeadingElement;
+        new (): HTMLBuiHeadingElement;
+    };
+    interface HTMLBuiParagraphElement extends Components.BuiParagraph, HTMLStencilElement {
+    }
+    var HTMLBuiParagraphElement: {
+        prototype: HTMLBuiParagraphElement;
+        new (): HTMLBuiParagraphElement;
+    };
     interface HTMLBuiTextElement extends Components.BuiText, HTMLStencilElement {
     }
     var HTMLBuiTextElement: {
@@ -25,21 +65,53 @@ declare global {
         new (): HTMLBuiTextElement;
     };
     interface HTMLElementTagNameMap {
+        "bui-heading": HTMLBuiHeadingElement;
+        "bui-paragraph": HTMLBuiParagraphElement;
         "bui-text": HTMLBuiTextElement;
     }
 }
 declare namespace LocalJSX {
+    interface BuiHeading {
+        /**
+          * The level of the heading.
+         */
+        "level"?: number;
+    }
+    interface BuiParagraph {
+        /**
+          * Code text
+         */
+        "code"?: boolean;
+        /**
+          * Color of the text
+         */
+        "color"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+        /**
+          * Disabled text
+         */
+        "disabled"?: boolean;
+        /**
+          * Display ellipsis when text overflows, can configure rows and expandable by using object
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Italic font style
+         */
+        "italic"?: boolean;
+        /**
+          * Strong font weight
+         */
+        "strong"?: boolean;
+        /**
+          * Underline text decoration
+         */
+        "underlined"?: boolean;
+    }
     interface BuiText {
-        /**
-          * The color of the text
-         */
-        "color"?: string;
-        /**
-          * The text to display
-         */
-        "text"?: string;
     }
     interface IntrinsicElements {
+        "bui-heading": BuiHeading;
+        "bui-paragraph": BuiParagraph;
         "bui-text": BuiText;
     }
 }
@@ -47,6 +119,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bui-heading": LocalJSX.BuiHeading & JSXBase.HTMLAttributes<HTMLBuiHeadingElement>;
+            "bui-paragraph": LocalJSX.BuiParagraph & JSXBase.HTMLAttributes<HTMLBuiParagraphElement>;
             "bui-text": LocalJSX.BuiText & JSXBase.HTMLAttributes<HTMLBuiTextElement>;
         }
     }

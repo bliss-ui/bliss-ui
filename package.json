@@ -31,8 +31,8 @@
     "build:autoprefix": "postcss css/*.css --use autoprefixer --dir css",
     "build:mincss": "cleancss -b css/*.css css",
     "build:scss": "node-sass --include-path node_modules --include-path ../../node_modules --output-style compressed --recursive src/styles/ -o css",
-    "build:styles": "npm run build:scss && npm run build:autoprefix && npm run build:mincss && npx copy css/bliss-ui-min.css dist",
-    "build": "npm run add:css && npm run build:components && npm run build:styles"
+    "build:styles": "npm run clean:css && npm run add:css && npm run build:scss && npm run build:autoprefix && npm run build:mincss && npx copy css/bliss-ui-min.css dist",
+    "build": "npm run build:styles && npm run build:components"
   },
   "dependencies": {
     "@stencil/core": "^4.7.0",
