@@ -9,14 +9,9 @@
  $danger-shadow:0 0.125rem 0 rgba(255, 38, 5, 0.06);
 
  /**
- * Background color hover for type text
- * We still need danger warning and success
+ * Background color type text
  */
-
  $color-primary-text-background: var(--bui-color-primary-text-background, #ffffff);
- $color-primary-text-background-hover: var(--bui-color-primary-text-background-hover, rgba(0,0,0,0.06));
- $color-primary-text-background-active: var(--bui-color-primary-text-background-active, $color-primary-text-background-hover);
-
 
 //Properties which outlined and dashed have in common
 //------------------------------------------------------------------
@@ -192,11 +187,11 @@
       color: black;
 
       &:hover{
-        background-color: $color-primary-text-background-hover;
+        background-color: $color-primary-bg;
       }
   
       &:active{
-        background-color: $color-primary-text-background-active;
+        background-color: $color-primary-bg;
       }
     }
 
@@ -206,11 +201,11 @@
       
 
       &:hover{
-        background-color: $color-primary-text-background-hover;
+        background-color: $color-error-bg-hover;
       }
   
       &:active{
-        background-color: $color-primary-text-background-active;
+        background-color: $color-error-bg-hover;
       }
     }
 
@@ -220,11 +215,11 @@
       
 
       &:hover{
-        background-color: $color-primary-text-background-hover;
+        background-color: $color-warning-bg-hover;
       }
   
       &:active{
-        background-color: $color-primary-text-background-active;
+        background-color: $color-warning-bg-hover;
       }
     }
 
@@ -234,11 +229,11 @@
       
 
       &:hover{
-        background-color: $color-primary-text-background-hover;
+        background-color: $color-success-bg-hover;
       }
   
       &:active{
-        background-color: $color-primary-text-background-active;
+        background-color: $color-success-bg-hover;
       }
     }
   }
