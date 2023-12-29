@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'bui-button',
@@ -15,6 +15,8 @@ export class BuiButton {
 
   @Prop({ reflect: true, mutable: true }) target?: '_blank' | '_self' | '_parent' | '_top';
 
+  @Prop() htmlType: 'submit' | 'button' = 'button';
+
   /**
    * Indicates the color of button
    */
@@ -28,6 +30,8 @@ export class BuiButton {
 
   @Prop() size: 'large' | 'default' | 'small' = 'default';
 
+  @Event() clickHandler?: EventEmitter;
+
   /**
    * Making href mandatory when type is of link
    */
@@ -40,10 +44,20 @@ export class BuiButton {
     }
   }
 
+  private handleClick(event: Event) {
+    if (this.loading || this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    this.clickHandler.emit();
+  }
+
   render() {
     if (this.href === undefined) {
       return (
         <button
+          onClick={e => this.handleClick(e)}
           class={`
           bui-btn 
           ${this.size ? `bui-btn--${this.size.toLowerCase()}` : ''}

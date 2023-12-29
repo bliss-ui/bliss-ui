@@ -182,6 +182,7 @@
     border: 0.063rem dashed;
   }
 
+  //Text Type
   &--text:not(.bui-btn--disabled){
     border:none;
     background-color: white;
@@ -242,7 +243,7 @@
     }
   }
 
-
+  //Link type
   &--link:not(.bui-btn--disabled){
     border:none;
     background-color: white;
@@ -287,21 +288,21 @@
     }
   }
 
-
+  //size small
   &--small{
     border-radius: $border-radius-sm;
     font-size: $font-size-base;
     padding: 0 0.438rem;
-    font-weight: 400;
   }
 
+  //size large
   &--large{
     border-radius: $border-radius-lg;
     padding:6.42857px 0.938rem;
     font-size: $font-size-lg;
   }
 
-
+  //shape round
   &--round{
     border-radius: 9999px;  
   }
@@ -330,7 +331,4 @@
     }
 }
   
-
-
-
 }

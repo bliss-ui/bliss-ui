@@ -13,6 +13,7 @@ export namespace Components {
         "color": 'primary' | 'danger' | 'warning' | 'success';
         "disabled": boolean;
         "href": string;
+        "htmlType": 'submit' | 'button';
         "loading": boolean;
         "shape": 'round';
         "size": 'large' | 'default' | 'small';
@@ -61,8 +62,23 @@ export namespace Components {
     interface BuiText {
     }
 }
+export interface BuiButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBuiButtonElement;
+}
 declare global {
+    interface HTMLBuiButtonElementEventMap {
+        "clickHandler": any;
+    }
     interface HTMLBuiButtonElement extends Components.BuiButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBuiButtonElementEventMap>(type: K, listener: (this: HTMLBuiButtonElement, ev: BuiButtonCustomEvent<HTMLBuiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBuiButtonElementEventMap>(type: K, listener: (this: HTMLBuiButtonElement, ev: BuiButtonCustomEvent<HTMLBuiButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBuiButtonElement: {
         prototype: HTMLBuiButtonElement;
@@ -101,7 +117,9 @@ declare namespace LocalJSX {
         "color"?: 'primary' | 'danger' | 'warning' | 'success';
         "disabled"?: boolean;
         "href"?: string;
+        "htmlType"?: 'submit' | 'button';
         "loading"?: boolean;
+        "onClickHandler"?: (event: BuiButtonCustomEvent<any>) => void;
         "shape"?: 'round';
         "size"?: 'large' | 'default' | 'small';
         "target"?: '_blank' | '_self' | '_parent' | '_top';
