@@ -1,0 +1,329 @@
+@import '../../styles/variables.scss';
+
+/**
+ * Shadows
+ * We need shadows for success and warning.
+ */
+ $primary-shadow: 0 0.125rem 0 rgba(5, 145, 255, 0.1);
+ $default-shadow: 0 0.125rem 0 rgba(0, 0, 0, 0.02);
+ $danger-shadow:0 0.125rem 0 rgba(255, 38, 5, 0.06);
+
+ /**
+ * Background color type text
+ */
+ $color-primary-text-background: var(--bui-color-primary-text-background, #ffffff);
+
+//Properties which outlined and dashed have in common
+//------------------------------------------------------------------
+ %outlined-dashed {
+  background-color: white;
+
+    &.primary{
+      color: black;
+      border-color: $color-border;
+      box-shadow: $default-shadow;
+
+      &:hover{
+        color: $color-primary-text-hover;
+        border-color: $color-primary-border-hover;
+      }
+  
+      &:active{
+        color: $color-primary-text-active;
+        border-color: $color-primary-text-active;
+      }
+    }
+
+    &.danger{
+      color: $color-error-text;
+      border-color: $color-error-border;
+      box-shadow: $danger-shadow;
+
+      &:hover{
+        color: $color-error-text-hover;
+        border-color: $color-error-border-hover;
+      }
+  
+      &:active{
+        color: $color-error-text-active;
+        border-color: $color-error-text-active;
+      }
+    }
+
+    &.warning{
+      color: $color-warning-text;
+      border-color: $color-warning-border;
+      box-shadow: $danger-shadow;
+
+      &:hover{
+        color: $color-warning-text-hover;
+        border-color: $color-warning-border-hover;
+      }
+  
+      &:active{
+        color: $color-warning-text-active;
+        border-color: $color-warning-text-active;
+      }
+    }
+
+    &.success{
+      color: $color-success-text;
+      border-color: $color-success-border;
+      box-shadow: $danger-shadow;
+
+      &:hover{
+        color: $color-success-text-hover;
+        border-color: $color-success-border-hover;
+      }
+  
+      &:active{
+        color: $color-success-text-active;
+        border-color: $color-success-text-active;
+      }
+    }
+}
+//------------------------------------------------------------------
+
+
+:host {
+  display: inline-block;
+  width: auto;
+}
+
+.bui-btn{
+  font-family: var(--bui-font-family);
+  display: inline-flex;
+  align-content: center;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  cursor: pointer;
+  padding: $padding-xxs 0.938rem;
+  transition: 0.15s;
+
+  &--filled:not(.bui-btn--disabled){
+    border: none;
+    color: white;
+
+    // Filled Primary
+    &.primary{
+      background-color: $color-primary;
+      box-shadow: $primary-shadow;
+
+      &:hover{
+        background-color: $color-primary-hover;
+      }
+  
+      &:active{
+        background-color: $color-primary-active;
+      }
+    }
+
+    // Filled Danger
+    &.danger{
+      background-color: $color-error;
+      box-shadow: $danger-shadow;
+
+      &:hover{
+        background-color: $color-error-hover;
+      }
+  
+      &:active{
+        background-color: $color-error-active;
+      }
+    }
+
+    // Filled Warning
+    &.warning{
+      background-color: $color-warning;
+      box-shadow: $danger-shadow;
+
+      &:hover{
+        background-color: $color-warning-hover;
+      }
+  
+      &:active{
+        background-color: $color-warning-active;
+      }
+    }
+
+    //Filled Success
+    &.success{
+      background-color: $color-success;
+      box-shadow: $danger-shadow;
+
+      &:hover{
+        background-color: $color-success-hover;
+      }
+  
+      &:active{
+        background-color: $color-success-active;
+      }
+    }
+  }
+
+  //Outlined Type
+  &--outlined:not(.bui-btn--disabled){
+    @extend %outlined-dashed;
+    border:0.063rem solid
+  }
+
+  //Dash Type
+  &--dashed:not(.bui-btn--disabled){
+    @extend %outlined-dashed;
+    border: 0.063rem dashed;
+  }
+
+  //Text Type
+  &--text:not(.bui-btn--disabled){
+    border:none;
+    background-color: white;
+
+    // text Primary
+    &.primary{
+      color: black;
+
+      &:hover{
+        background-color: $color-primary-bg;
+      }
+  
+      &:active{
+        background-color: $color-primary-bg;
+      }
+    }
+
+    // text Danger
+    &.danger{
+      color: $color-error;
+      
+
+      &:hover{
+        background-color: $color-error-bg-hover;
+      }
+  
+      &:active{
+        background-color: $color-error-bg-hover;
+      }
+    }
+
+    // text Warning
+    &.warning{
+      color: $color-warning;
+      
+
+      &:hover{
+        background-color: $color-warning-bg-hover;
+      }
+  
+      &:active{
+        background-color: $color-warning-bg-hover;
+      }
+    }
+
+    //text Success
+    &.success{
+      color: $color-success;
+      
+
+      &:hover{
+        background-color: $color-success-bg-hover;
+      }
+  
+      &:active{
+        background-color: $color-success-bg-hover;
+      }
+    }
+  }
+
+  //Link type
+  &--link:not(.bui-btn--disabled){
+    border:none;
+    background-color: white;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+
+    // link Primary
+    &.primary{
+      color: $color-primary;
+  
+      &:active{
+        color: $color-primary-text-active;
+      }
+    }
+
+    // link Danger
+    &.danger{
+      color: $color-error;
+  
+      &:active{
+        color: $color-error-text-active;
+      }
+    }
+
+    // link Warning
+    &.warning{
+      color: $color-warning;
+
+      &:active{
+        color: $color-warning-text-active;
+      }
+    }
+
+    //link Success
+    &.success{
+      color: $color-success;
+
+      &:active{
+        color: $color-success-text-active;
+      }
+    }
+  }
+
+  //size small
+  &--small{
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    padding: 0 0.438rem;
+  }
+
+  //size large
+  &--large{
+    border-radius: $border-radius-lg;
+    padding:6.42857px 0.938rem;
+    font-size: $font-size-lg;
+  }
+
+  //shape round
+  &--round{
+    border-radius: 9999px;  
+  }
+
+  &--disabled, &[disabled]{
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+    box-shadow: none;
+    color: $border-color;
+    border: 0.063rem solid $border-color;
+
+    &.bui-btn--dashed{
+      border:dashed 0.063rem;
+    }
+
+    &.bui-btn--text, &.bui-btn--link{
+      background-color: white;
+      color: $border-color;
+      border: none;
+    }
+
+    &.bui-btn--link{
+      text-decoration: none;
+      padding: 0;
+      margin: 0;
+    }
+}
+  
+}

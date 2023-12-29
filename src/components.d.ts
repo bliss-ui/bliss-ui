@@ -6,6 +6,23 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface BuiButton {
+        /**
+          * Indicates the color of button
+         */
+        "color": 'primary' | 'danger' | 'warning' | 'success';
+        "disabled": boolean;
+        "href": string;
+        "htmlType": 'submit' | 'button';
+        "loading": boolean;
+        "shape": 'round';
+        "size": 'large' | 'default' | 'small';
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * The type of the button.
+         */
+        "type": 'filled' | 'outlined' | 'dashed' | 'text' | 'link';
+    }
     interface BuiHeading {
         /**
           * The level of the heading.
@@ -45,7 +62,28 @@ export namespace Components {
     interface BuiText {
     }
 }
+export interface BuiButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBuiButtonElement;
+}
 declare global {
+    interface HTMLBuiButtonElementEventMap {
+        "clickHandler": any;
+    }
+    interface HTMLBuiButtonElement extends Components.BuiButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBuiButtonElementEventMap>(type: K, listener: (this: HTMLBuiButtonElement, ev: BuiButtonCustomEvent<HTMLBuiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBuiButtonElementEventMap>(type: K, listener: (this: HTMLBuiButtonElement, ev: BuiButtonCustomEvent<HTMLBuiButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBuiButtonElement: {
+        prototype: HTMLBuiButtonElement;
+        new (): HTMLBuiButtonElement;
+    };
     interface HTMLBuiHeadingElement extends Components.BuiHeading, HTMLStencilElement {
     }
     var HTMLBuiHeadingElement: {
@@ -65,12 +103,31 @@ declare global {
         new (): HTMLBuiTextElement;
     };
     interface HTMLElementTagNameMap {
+        "bui-button": HTMLBuiButtonElement;
         "bui-heading": HTMLBuiHeadingElement;
         "bui-paragraph": HTMLBuiParagraphElement;
         "bui-text": HTMLBuiTextElement;
     }
 }
 declare namespace LocalJSX {
+    interface BuiButton {
+        /**
+          * Indicates the color of button
+         */
+        "color"?: 'primary' | 'danger' | 'warning' | 'success';
+        "disabled"?: boolean;
+        "href"?: string;
+        "htmlType"?: 'submit' | 'button';
+        "loading"?: boolean;
+        "onClickHandler"?: (event: BuiButtonCustomEvent<any>) => void;
+        "shape"?: 'round';
+        "size"?: 'large' | 'default' | 'small';
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * The type of the button.
+         */
+        "type"?: 'filled' | 'outlined' | 'dashed' | 'text' | 'link';
+    }
     interface BuiHeading {
         /**
           * The level of the heading.
@@ -110,6 +167,7 @@ declare namespace LocalJSX {
     interface BuiText {
     }
     interface IntrinsicElements {
+        "bui-button": BuiButton;
         "bui-heading": BuiHeading;
         "bui-paragraph": BuiParagraph;
         "bui-text": BuiText;
@@ -119,6 +177,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bui-button": LocalJSX.BuiButton & JSXBase.HTMLAttributes<HTMLBuiButtonElement>;
             "bui-heading": LocalJSX.BuiHeading & JSXBase.HTMLAttributes<HTMLBuiHeadingElement>;
             "bui-paragraph": LocalJSX.BuiParagraph & JSXBase.HTMLAttributes<HTMLBuiParagraphElement>;
             "bui-text": LocalJSX.BuiText & JSXBase.HTMLAttributes<HTMLBuiTextElement>;
